@@ -42,7 +42,7 @@ const Contact = () => {
     const encodedMessage = encodeURIComponent(message);
     
     // Open Telegram with pre-filled message
-    const telegramUrl = `https://t.me/pixelheroforce?text=${encodedMessage}`;
+    const telegramUrl = `https://t.me/dcalabs?text=${encodedMessage}`;
     window.open(telegramUrl, '_blank');
     
     // Reset form
@@ -94,17 +94,17 @@ const Contact = () => {
       icon: <MessageSquare className="h-6 w-6" />,
       title: "Telegram",
       description: "Get a free project quote",
-      contact: "@",
+      contact: "@dcalabs",
       action: "Start Chat",
-      link: "https://t.me/pixelheroforce"
+      link: "https://t.me/dcalabs"
     },
     {
       icon: <MessageSquare className="h-6 w-6" />,
       title: "WhatsApp",
       description: "Quick project inquiries",
-      contact: "Available 9AM-6PM",
+      contact: "+84 369439969",
       action: "Start Chat",
-      link: "https://wa.me/1234567890"
+      link: "https://wa.me/84369439969"
     }
   ];
 
@@ -161,9 +161,9 @@ const Contact = () => {
                       </h4>
                       <p className="text-zinc-400 text-sm mb-2">{method.description}</p>
                       <p className="text-zinc-300 text-sm font-medium mb-3">{method.contact}</p>
-                      <button className="text-emerald-400 text-sm font-medium hover:text-emerald-300 transition-colors">
+                      <span className="text-emerald-400 text-sm font-medium hover:text-emerald-300 transition-colors">
                         {method.action} →
-                      </button>
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -330,7 +330,7 @@ const Contact = () => {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
               <button 
-                onClick={() => window.open('https://t.me/dcalabs_support', '_blank')}
+                onClick={() => window.open('https://t.me/dcalabs', '_blank')}
                 className="bg-white text-black px-8 py-4 rounded-full hover:bg-zinc-100 transition-all duration-300 text-lg font-bold cursor-pointer"
               >
                 Schedule Consultation

@@ -4,53 +4,37 @@ import { ExternalLink, Github, ArrowUpRight, Zap, Shield, Layers } from 'lucide-
 const Portfolio = () => {
   const projects = [
     {
-      title: "AI-Powered DeFi Trading",
-      description: "Advanced DeFi protocol with AI-driven trading algorithms, automated yield optimization, and intelligent risk management for a fintech startup.",
-      tech: ["Solidity", "Python", "TensorFlow", "React"],
-      category: "AI/DeFi",
-      metrics: { tvl: "$50M+", accuracy: "94%", apy: "18%" },
-      image: "https://images.pexels.com/photos/7567486/pexels-photo-7567486.jpeg?auto=compress&cs=tinysrgb&w=800",
+      title: "Lumnia DEX Platform",
+      description: "Next-generation DeFi platform built on Somnia blockchain featuring advanced v2/v3 AMMs, gamified NFT collections, lottery system, and LX Points rewards. Transforms DeFi with user-focused design and creative incentive systems.",
+      tech: ["Solidity", "Somnia", "React", "Web3"],
+      category: "DeFi",
+      metrics: { amms: "v2/v3", users: "10K+", blockchain: "Somnia" },
+      image: "/images/projects/lumnia-dex.jpg",
       featured: true
     },
     {
-      title: "Smart Contract Development",
-      description: "Complete smart contract suite for a DeFi lending platform with automated liquidations and multi-collateral support.",
-      tech: ["Solidity", "React", "Node.js", "Chainlink"],
-      category: "Blockchain",
-      metrics: { contracts: "15+", tvl: "$30M+", users: "8K+" },
-      image: "https://images.pexels.com/photos/7567443/pexels-photo-7567443.jpeg?auto=compress&cs=tinysrgb&w=800"
+      title: "WikiAgent AI Analytics",
+      description: "Ultimate AI-powered crypto analytics platform with GPT-4o, Grok 3, and DeepSeek integration. Comprehensive token analysis across 100+ blockchains with real-time data aggregation and intelligent narratives.",
+      tech: ["AI/ML", "GPT-4o", "Grok 3", "DeepSeek"],
+      category: "AI/Analytics",
+      metrics: { blockchains: "10+", models: "4+", tokens: "Unlimited" },
+      image: "/images/projects/wikiagent-ai.jpg"
     },
     {
-      title: "AI NFT Generator",
-      description: "Blockchain-based NFT marketplace with AI-powered content generation and automated royalty distribution.",
-      tech: ["Solidity", "Python", "OpenAI", "IPFS"],
-      category: "AI/NFT",
-      metrics: { nfts: "50K+", volume: "$3M+", users: "15K+" },
-      image: "https://images.pexels.com/photos/6694543/pexels-photo-6694543.jpeg?auto=compress&cs=tinysrgb&w=800"
+      title: "Meowtopia Game",
+      description: "First Mini Dapp game on LINE platform featuring cat rescue gameplay, house building mechanics, and zodiac merge elements. Combines blockchain technology with engaging mobile gaming experience.",
+      tech: ["Blockchain", "LINE", "GameFi", "NFT"],
+      category: "GameFi",
+      metrics: { players: "10K+", features: "5+", platform: "Telegram" },
+      image: "/images/projects/meowtopia.jpg"
     },
     {
-      title: "DEX with AI Routing",
-      description: "Decentralized exchange with AI-optimized routing, MEV protection, and intelligent liquidity management.",
-      tech: ["Solidity", "Python", "ML", "Web3"],
-      category: "AI/DeFi",
-      metrics: { volume: "$80M+", savings: "20%", dexes: "15+" },
-      image: "https://images.pexels.com/photos/7567517/pexels-photo-7567517.jpeg?auto=compress&cs=tinysrgb&w=800"
-    },
-    {
-      title: "Blockchain Supply Chain",
-      description: "Enterprise blockchain solution with IoT integration and real-time tracking for supply chain management.",
-      tech: ["Solidity", "React", "IoT", "Node.js"],
-      category: "Blockchain",
-      metrics: { shipments: "500K+", accuracy: "99.5%", savings: "25%" },
-      image: "https://images.pexels.com/photos/7567525/pexels-photo-7567525.jpeg?auto=compress&cs=tinysrgb&w=800"
-    },
-    {
-      title: "AI Security Audit",
-      description: "AI-enhanced smart contract auditing system with automated vulnerability detection and risk assessment.",
-      tech: ["Python", "ML", "Solidity", "Security"],
-      category: "AI/Security",
-      metrics: { audits: "80+", bugs: "300+", saved: "$5M+" },
-      image: "https://images.pexels.com/photos/7567564/pexels-photo-7567564.jpeg?auto=compress&cs=tinysrgb&w=800"
+      title: "EZ Wallet",
+      description: "The easiest and most convenient crypto wallet designed for Web2 users. Features learn-and-earn, send with confirmation, limit-order DeFi, unified identity, and fiat integration through MoonPay/Transak.",
+      tech: ["Web3", "DeFi", "NestJS", "GraphQL", "Solidity", "web3.js"],
+      category: "Wallet",
+      metrics: { features: "8+", chains: "Multi", users: "5K+" },
+      image: "/images/projects/ezwallet.jpg"
     }
   ];
 
@@ -59,6 +43,10 @@ const Portfolio = () => {
       "AI/DeFi": <Zap className="h-4 w-4" />,
       "AI/NFT": <Layers className="h-4 w-4" />,
       "AI/Security": <Shield className="h-4 w-4" />,
+      "AI/Analytics": <Zap className="h-4 w-4" />,
+      "DeFi": <Zap className="h-4 w-4" />,
+      "GameFi": <Layers className="h-4 w-4" />,
+      "Wallet": <Shield className="h-4 w-4" />,
       Blockchain: <Layers className="h-4 w-4" />
     };
     return icons[category as keyof typeof icons] || <Layers className="h-4 w-4" />;
@@ -69,6 +57,10 @@ const Portfolio = () => {
       "AI/DeFi": "bg-orange-500/20 text-orange-400 border-orange-500/30",
       "AI/NFT": "bg-purple-500/20 text-purple-400 border-purple-500/30",
       "AI/Security": "bg-red-500/20 text-red-400 border-red-500/30",
+      "AI/Analytics": "bg-cyan-500/20 text-cyan-400 border-cyan-500/30",
+      "DeFi": "bg-blue-500/20 text-blue-400 border-blue-500/30",
+      "GameFi": "bg-pink-500/20 text-pink-400 border-pink-500/30",
+      "Wallet": "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
       Blockchain: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
     };
     return colors[category as keyof typeof colors] || "bg-zinc-500/20 text-zinc-400 border-zinc-500/30";
@@ -149,14 +141,20 @@ const Portfolio = () => {
                   </div>
                   
                   <div className="flex items-center space-x-6">
-                    <button className="flex items-center space-x-2 text-emerald-400 hover:text-emerald-300 transition-colors font-semibold">
+                    <button 
+                      onClick={() => window.open('https://www.lumnia.tech/', '_blank')}
+                      className="flex items-center space-x-2 text-emerald-400 hover:text-emerald-300 transition-colors font-semibold cursor-pointer"
+                    >
                       <ArrowUpRight className="h-4 w-4" />
                       <span>View Project</span>
                     </button>
                     
-                    <button className="flex items-center space-x-2 text-zinc-400 hover:text-zinc-300 transition-colors">
-                      <Github className="h-4 w-4" />
-                      <span>Technical Details</span>
+                    <button 
+                      onClick={() => window.open('https://docs.lumnia.tech/', '_blank')}
+                      className="flex items-center space-x-2 text-zinc-400 hover:text-zinc-300 transition-colors cursor-pointer"
+                    >
+                      <ExternalLink className="h-4 w-4" />
+                      <span>Documentation</span>
                     </button>
                   </div>
                 </div>
@@ -221,14 +219,40 @@ const Portfolio = () => {
                 </div>
                 
                 <div className="flex items-center justify-between">
-                  <button className="flex items-center space-x-1 text-emerald-400 hover:text-emerald-300 transition-colors text-sm font-medium">
+                  <button 
+                    onClick={() => {
+                      if (project.title === "WikiAgent AI Analytics") {
+                        window.open('https://www.wikiagent.ai/', '_blank');
+                      } else if (project.title === "Meowtopia Game") {
+                        window.open('https://meowtopia.fun/', '_blank');
+                      } else if (project.title === "EZ Wallet") {
+                        window.open('https://ezwallet.xyz/', '_blank');
+                      } else {
+                        // Default action for other projects
+                      }
+                    }}
+                    className="flex items-center space-x-1 text-emerald-400 hover:text-emerald-300 transition-colors text-sm font-medium cursor-pointer"
+                  >
                     <ArrowUpRight className="h-3 w-3" />
                     <span>Details</span>
                   </button>
                   
-                  <button className="flex items-center space-x-1 text-zinc-400 hover:text-zinc-300 transition-colors text-sm">
-                    <Github className="h-3 w-3" />
-                    <span>Code</span>
+                  <button 
+                    onClick={() => {
+                      if (project.title === "WikiAgent AI Analytics") {
+                        window.open('https://www.wikiagent.ai/docs', '_blank');
+                      } else if (project.title === "Meowtopia Game") {
+                        window.open('https://meowtopia.fun/', '_blank');
+                      } else if (project.title === "EZ Wallet") {
+                        window.open('https://ezwallet.xyz/', '_blank');
+                      } else {
+                        // Default action for other projects
+                      }
+                    }}
+                    className="flex items-center space-x-1 text-zinc-400 hover:text-zinc-300 transition-colors text-sm cursor-pointer"
+                  >
+                    <ExternalLink className="h-3 w-3" />
+                    <span>Visit</span>
                   </button>
                 </div>
               </div>

@@ -112,23 +112,17 @@ const Hero = () => {
               </div>
 
               {/* Floating elements */}
-              <div className="absolute -top-4 -right-4 w-20 h-20 bg-emerald-400/10 rounded-2xl border border-emerald-400/20 flex items-center justify-center">
+              <div className="absolute -top-4 -right-4 w-20 h-20 bg-emerald-400/10 rounded-2xl border border-emerald-400/20 flex items-center justify-center animate-bounce">
                 <Code className="h-8 w-8 text-emerald-400" />
               </div>
               
-              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-cyan-400/10 rounded-xl border border-cyan-400/20 flex items-center justify-center">
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-cyan-400/10 rounded-xl border border-cyan-400/20 flex items-center justify-center animate-bounce" style={{animationDelay: '0.5s'}}>
                 <Database className="h-6 w-6 text-cyan-400" />
               </div>
             </div>
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <div className="w-6 h-10 border-2 border-zinc-700 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-zinc-500 rounded-full mt-2 animate-bounce"></div>
-          </div>
-        </div>
       </div>
     </section>
   );

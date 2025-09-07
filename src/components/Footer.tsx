@@ -1,5 +1,5 @@
 import React from 'react';
-import { Hexagon, Twitter, Github, Linkedin, Mail } from 'lucide-react';
+import { Hexagon, Github, MessageSquare } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -21,14 +21,11 @@ const Footer = () => {
             </p>
             
             <div className="flex space-x-4">
-              <a href="https://twitter.com/dcalabs" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors">
-                <Twitter className="h-5 w-5" />
+              <a href="https://t.me/dcalabs" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors">
+                <MessageSquare className="h-5 w-5" />
               </a>
               <a href="https://github.com/dcalabs" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors">
                 <Github className="h-5 w-5" />
-              </a>
-              <a href="https://linkedin.com/company/dcalabs" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors">
-                <Linkedin className="h-5 w-5" />
               </a>
             </div>
           </div>
