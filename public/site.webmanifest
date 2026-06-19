@@ -1,0 +1,23 @@
+{
+  "name": "DCALabs",
+  "short_name": "DCALabs",
+  "description": "Web3, AI, DeFi, wallet, GameFi, analytics, and full-stack product engineering team.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050607",
+  "theme_color": "#050607",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "64x64",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo-mark.svg",
+      "sizes": "160x160",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

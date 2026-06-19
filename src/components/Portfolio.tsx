@@ -1,278 +1,151 @@
-import React from 'react';
-import { ExternalLink, Github, ArrowUpRight, Zap, Shield, Layers } from 'lucide-react';
+import { useEffect, useRef } from 'react';
+import { ArrowRight, ArrowUpRight, CircuitBoard, ExternalLink, ShieldCheck } from 'lucide-react';
+import { projects } from '../data/projects';
 
 const Portfolio = () => {
-  const projects = [
-    {
-      title: "Lumnia DEX Platform",
-      description: "Next-generation DeFi platform built on Somnia blockchain featuring advanced v2/v3 AMMs, gamified NFT collections, lottery system, and LX Points rewards. Transforms DeFi with user-focused design and creative incentive systems.",
-      tech: ["Solidity", "Somnia", "React", "Web3"],
-      category: "DeFi",
-      metrics: { amms: "v2/v3", users: "10K+", blockchain: "Somnia" },
-      image: "/images/projects/lumnia-dex.jpg",
-      featured: true
-    },
-    {
-      title: "WikiAgent AI Analytics",
-      description: "Ultimate AI-powered crypto analytics platform with GPT-4o, Grok 3, and DeepSeek integration. Comprehensive token analysis across 100+ blockchains with real-time data aggregation and intelligent narratives.",
-      tech: ["AI/ML", "GPT-4o", "Grok 3", "DeepSeek"],
-      category: "AI/Analytics",
-      metrics: { blockchains: "10+", models: "4+", tokens: "Unlimited" },
-      image: "/images/projects/wikiagent-ai.jpg"
-    },
-    {
-      title: "Meowtopia Game",
-      description: "First Mini Dapp game on LINE platform featuring cat rescue gameplay, house building mechanics, and zodiac merge elements. Combines blockchain technology with engaging mobile gaming experience.",
-      tech: ["Blockchain", "LINE", "GameFi", "NFT"],
-      category: "GameFi",
-      metrics: { players: "10K+", features: "5+", platform: "Telegram" },
-      image: "/images/projects/meowtopia.jpg"
-    },
-    {
-      title: "EZ Wallet",
-      description: "The easiest and most convenient crypto wallet designed for Web2 users. Features learn-and-earn, send with confirmation, limit-order DeFi, unified identity, and fiat integration through MoonPay/Transak.",
-      tech: ["Web3", "DeFi", "NestJS", "GraphQL", "Solidity", "web3.js"],
-      category: "Wallet",
-      metrics: { features: "8+", chains: "Multi", users: "5K+" },
-      image: "/images/projects/ezwallet.jpg"
-    }
-  ];
+  const carouselProjects = [...projects, ...projects];
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<HTMLElement[]>([]);
 
-  const getCategoryIcon = (category: string) => {
-    const icons = {
-      "AI/DeFi": <Zap className="h-4 w-4" />,
-      "AI/NFT": <Layers className="h-4 w-4" />,
-      "AI/Security": <Shield className="h-4 w-4" />,
-      "AI/Analytics": <Zap className="h-4 w-4" />,
-      "DeFi": <Zap className="h-4 w-4" />,
-      "GameFi": <Layers className="h-4 w-4" />,
-      "Wallet": <Shield className="h-4 w-4" />,
-      Blockchain: <Layers className="h-4 w-4" />
-    };
-    return icons[category as keyof typeof icons] || <Layers className="h-4 w-4" />;
-  };
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    const track = trackRef.current;
+    if (!carousel || !track) return;
 
-  const getCategoryColor = (category: string) => {
-    const colors = {
-      "AI/DeFi": "bg-orange-500/20 text-orange-400 border-orange-500/30",
-      "AI/NFT": "bg-purple-500/20 text-purple-400 border-purple-500/30",
-      "AI/Security": "bg-red-500/20 text-red-400 border-red-500/30",
-      "AI/Analytics": "bg-cyan-500/20 text-cyan-400 border-cyan-500/30",
-      "DeFi": "bg-blue-500/20 text-blue-400 border-blue-500/30",
-      "GameFi": "bg-pink-500/20 text-pink-400 border-pink-500/30",
-      "Wallet": "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
-      Blockchain: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
+    let animationFrame = 0;
+    let lastTime = performance.now();
+    let offset = 0;
+    const speed = 34;
+
+    const animate = (time: number) => {
+      const delta = Math.min(time - lastTime, 48) / 1000;
+      lastTime = time;
+      const cycleWidth = track.scrollWidth / 2;
+      offset = cycleWidth > 0 ? (offset + speed * delta) % cycleWidth : 0;
+      track.style.transform = `translate3d(${-offset}px, 0, 0)`;
+
+      const carouselRect = carousel.getBoundingClientRect();
+      const center = carouselRect.left + carouselRect.width / 2;
+      const influence = carouselRect.width * 0.34;
+
+      cardRefs.current.forEach((card) => {
+        if (!card) return;
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.left + rect.width / 2;
+        const distance = Math.abs(cardCenter - center);
+        const focus = Math.max(0, 1 - distance / influence);
+        const eased = focus * focus * (3 - 2 * focus);
+
+        card.style.setProperty('--scale', String(0.86 + eased * 0.18));
+        card.style.setProperty('--lift', `${28 - eased * 42}px`);
+        card.style.setProperty('--fade', String(0.48 + eased * 0.52));
+        card.style.zIndex = String(Math.round(eased * 100));
+      });
+
+      animationFrame = requestAnimationFrame(animate);
     };
-    return colors[category as keyof typeof colors] || "bg-zinc-500/20 text-zinc-400 border-zinc-500/30";
-  };
+
+    animationFrame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationFrame);
+  }, []);
 
   return (
-    <section id="portfolio" className="py-32 bg-black relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(16,185,129,0.1),transparent_50%)]"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(6,182,212,0.1),transparent_50%)]"></div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center space-x-2 bg-zinc-900/50 border border-zinc-800 rounded-full px-4 py-2 mb-8">
-            <span className="text-zinc-400 text-sm font-medium tracking-wide">OUR WORK</span>
+    <section id="portfolio" className="tech-section relative overflow-hidden py-32">
+      <div className="absolute inset-0 tech-grid opacity-70" />
+      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-cyan-300/[0.08] to-transparent" />
+      <div className="absolute left-1/2 top-[48%] h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-300/[0.045] blur-3xl" />
+      <div className="absolute left-0 top-20 h-px w-full bg-gradient-to-r from-transparent via-cyan-300/30 to-transparent" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-4xl">
+            <div className="section-kicker mb-5">
+              <CircuitBoard className="h-4 w-4" />
+              Proof of execution
+            </div>
+            <h2 className="font-display text-5xl font-black leading-[0.9] tracking-tight text-white sm:text-7xl">
+              Portfolio clients can inspect.
+              <span className="block text-cyan-200">Not just pretty cards.</span>
+            </h2>
           </div>
-          
-          <h2 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter leading-none">
-            SUCCESSFUL
-            <span className="block bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-              PROJECTS
-            </span>
-          </h2>
-          
-          <p className="text-xl text-zinc-400 max-w-3xl mx-auto font-light leading-relaxed">
-            Explore our portfolio of successful blockchain and AI projects. From AI-powered DeFi protocols to intelligent NFT marketplaces, we deliver cutting-edge solutions that exceed expectations.
+          <p className="max-w-lg text-base leading-8 text-slate-300">
+            Every project opens into a technical case study with client context, scope, modules, architecture, stack, deliverables, and outcomes.
           </p>
         </div>
 
-        {/* Featured Project */}
-        {projects.filter(p => p.featured).map((project, index) => (
-          <div key={index} className="mb-20">
-            <div className="bg-zinc-900/30 border border-zinc-800/50 rounded-3xl overflow-hidden hover:border-zinc-700/50 transition-all duration-500 group">
-              <div className="grid grid-cols-1 lg:grid-cols-2">
-                <div className="relative overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-80 lg:h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent"></div>
-                  <div className="absolute top-6 left-6">
-                    <div className={`inline-flex items-center space-x-2 px-3 py-1 rounded-full border text-xs font-semibold ${getCategoryColor(project.category)}`}>
-                      {getCategoryIcon(project.category)}
-                      <span>{project.category}</span>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="p-12 flex flex-col justify-center">
-                  <h3 className="text-3xl font-black text-white mb-4 group-hover:text-emerald-400 transition-colors">
-                    {project.title}
-                  </h3>
-                  
-                  <p className="text-zinc-400 mb-8 text-lg leading-relaxed">
-                    {project.description}
-                  </p>
-                  
-                  <div className="grid grid-cols-3 gap-6 mb-8">
-                    {Object.entries(project.metrics).map(([key, value], metricIndex) => (
-                      <div key={metricIndex}>
-                        <div className="text-2xl font-bold text-white mb-1">{value}</div>
-                        <div className="text-zinc-500 text-xs uppercase tracking-wider">{key}</div>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  <div className="flex flex-wrap gap-2 mb-8">
-                    {project.tech.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="bg-zinc-800/50 text-zinc-300 px-3 py-1 rounded-full text-sm font-medium"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  <div className="flex items-center space-x-6">
-                    <button 
-                      onClick={() => window.open('https://www.lumnia.tech/', '_blank')}
-                      className="flex items-center space-x-2 text-emerald-400 hover:text-emerald-300 transition-colors font-semibold cursor-pointer"
-                    >
-                      <ArrowUpRight className="h-4 w-4" />
-                      <span>View Project</span>
-                    </button>
-                    
-                    <button 
-                      onClick={() => window.open('https://docs.lumnia.tech/', '_blank')}
-                      className="flex items-center space-x-2 text-zinc-400 hover:text-zinc-300 transition-colors cursor-pointer"
-                    >
-                      <ExternalLink className="h-4 w-4" />
-                      <span>Documentation</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-
-        {/* Other Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.filter(p => !p.featured).map((project, index) => (
-            <div
-              key={index}
-              className="bg-zinc-900/30 border border-zinc-800/50 rounded-3xl overflow-hidden hover:border-zinc-700/50 transition-all duration-500 group hover:transform hover:-translate-y-2"
+        <div className="relative">
+        <div ref={carouselRef} className="portfolio-carousel -mx-4 overflow-hidden px-4 py-20 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+          <div ref={trackRef} className="portfolio-track flex w-max gap-5">
+          {carouselProjects.map((project, index) => (
+            <article
+              key={`${project.slug}-${index}`}
+              ref={(element) => {
+                if (element) cardRefs.current[index] = element;
+              }}
+              className="group portfolio-card flex h-[650px] w-[292px] shrink-0 flex-col overflow-hidden border border-slate-800/90 bg-[#080d12]/90 sm:w-[320px]"
             >
-              <div className="relative overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-4 left-4">
-                  <div className={`inline-flex items-center space-x-2 px-3 py-1 rounded-full border text-xs font-semibold ${getCategoryColor(project.category)}`}>
-                    {getCategoryIcon(project.category)}
-                    <span>{project.category}</span>
-                  </div>
+              <a href={`/portfolio/${project.slug}`} className="relative block h-56 overflow-hidden">
+                <img src={project.image} alt={project.title} className="h-full w-full object-cover grayscale-[20%] transition duration-700 group-hover:scale-110 group-hover:grayscale-0" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050607] via-[#050607]/20 to-transparent" />
+                <div className="absolute left-4 top-4 rounded-sm border border-cyan-300/25 bg-black/55 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-cyan-200 backdrop-blur">
+                  {project.category}
                 </div>
-              </div>
-              
-              <div className="p-8">
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-emerald-400 transition-colors">
-                  {project.title}
-                </h3>
-                
-                <p className="text-zinc-400 mb-6 text-sm leading-relaxed">
-                  {project.description}
-                </p>
-                
-                <div className="grid grid-cols-3 gap-4 mb-6">
-                  {Object.entries(project.metrics).map(([key, value], metricIndex) => (
-                    <div key={metricIndex} className="text-center">
-                      <div className="text-lg font-bold text-white mb-1">{value}</div>
-                      <div className="text-zinc-500 text-xs uppercase tracking-wider">{key}</div>
+              </a>
+
+              <div className="flex flex-1 flex-col p-5">
+                <div className="mb-4 font-mono text-xs text-slate-500">CASE_{String((index % projects.length) + 1).padStart(2, '0')}</div>
+                <h3 className="flex h-8 items-start font-display text-2xl font-black leading-none text-white">{project.shortTitle}</h3>
+                <p className="mt-4 h-[72px] text-sm leading-6 text-slate-400">{project.cardSummary}</p>
+
+                <div className="mt-5 grid h-[84px] grid-cols-1 gap-2">
+                  {project.cardFacts.map((fact) => (
+                    <div key={fact.label} className="grid grid-cols-[84px_1fr] border border-slate-800 bg-slate-950/70">
+                      <div className="border-r border-slate-800 px-3 py-2 font-mono text-[10px] text-slate-500">{fact.label}</div>
+                      <div className="px-3 py-2 text-sm font-bold text-slate-100">{fact.value}</div>
                     </div>
                   ))}
                 </div>
-                
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tech.slice(0, 3).map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="bg-zinc-800/50 text-zinc-300 px-2 py-1 rounded text-xs font-medium"
-                    >
+
+                <div className="mt-5 flex min-h-[58px] content-start flex-wrap gap-2">
+                  {project.stack.slice(0, 4).map((tech) => (
+                    <span key={tech} className="border border-slate-800 bg-slate-950 px-2 py-1 font-mono text-[10px] text-slate-300">
                       {tech}
                     </span>
                   ))}
-                  {project.tech.length > 3 && (
-                    <span className="bg-zinc-800/50 text-zinc-400 px-2 py-1 rounded text-xs">
-                      +{project.tech.length - 3}
-                    </span>
+                </div>
+
+                <div className="mt-auto flex items-center justify-between border-t border-slate-800 pt-5">
+                  <a href={`/portfolio/${project.slug}`} className="inline-flex items-center gap-2 bg-cyan-200 px-3 py-2 font-mono text-xs font-black uppercase tracking-[0.16em] text-black transition hover:bg-white">
+                    Open details
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </a>
+                  {project.links[0] && (
+                    <a href={project.links[0].href} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title}`} className="text-slate-500 transition hover:text-cyan-200">
+                      <ExternalLink className="h-4 w-4" />
+                    </a>
                   )}
                 </div>
-                
-                <div className="flex items-center justify-between">
-                  <button 
-                    onClick={() => {
-                      if (project.title === "WikiAgent AI Analytics") {
-                        window.open('https://www.wikiagent.ai/', '_blank');
-                      } else if (project.title === "Meowtopia Game") {
-                        window.open('https://meowtopia.fun/', '_blank');
-                      } else if (project.title === "EZ Wallet") {
-                        window.open('https://ezwallet.xyz/', '_blank');
-                      } else {
-                        // Default action for other projects
-                      }
-                    }}
-                    className="flex items-center space-x-1 text-emerald-400 hover:text-emerald-300 transition-colors text-sm font-medium cursor-pointer"
-                  >
-                    <ArrowUpRight className="h-3 w-3" />
-                    <span>Details</span>
-                  </button>
-                  
-                  <button 
-                    onClick={() => {
-                      if (project.title === "WikiAgent AI Analytics") {
-                        window.open('https://www.wikiagent.ai/docs', '_blank');
-                      } else if (project.title === "Meowtopia Game") {
-                        window.open('https://meowtopia.fun/', '_blank');
-                      } else if (project.title === "EZ Wallet") {
-                        window.open('https://ezwallet.xyz/', '_blank');
-                      } else {
-                        // Default action for other projects
-                      }
-                    }}
-                    className="flex items-center space-x-1 text-zinc-400 hover:text-zinc-300 transition-colors text-sm cursor-pointer"
-                  >
-                    <ExternalLink className="h-3 w-3" />
-                    <span>Visit</span>
-                  </button>
-                </div>
               </div>
-            </div>
+            </article>
           ))}
+          </div>
+        </div>
         </div>
 
-        {/* CTA */}
-        <div className="mt-24 text-center">
-          <div className="bg-zinc-900/30 border border-zinc-800/50 rounded-3xl p-12 backdrop-blur-sm">
-            <h3 className="text-3xl font-bold text-white mb-4">Ready to Build Your Blockchain & AI Solution?</h3>
-            <p className="text-zinc-400 mb-8 max-w-2xl mx-auto">
-              Join our satisfied clients and let us help you build your next blockchain and AI solution. Get a free consultation today.
-            </p>
-            <button 
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-white text-black px-8 py-4 rounded-full hover:bg-zinc-100 transition-all duration-300 text-lg font-bold cursor-pointer"
-            >
-              Get Free Quote
-            </button>
+        <div className="mt-8 border border-cyan-300/25 bg-cyan-300/[0.055] p-6 shadow-[0_0_80px_rgba(34,211,238,0.08)]">
+          <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+            <div>
+              <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.24em] text-cyan-200">
+                <ShieldCheck className="h-4 w-4" />
+                Need deeper proof?
+              </div>
+              <p className="mt-2 text-slate-300">Open any case study to inspect scope, modules, architecture, stack, deliverables, outcomes, and live links.</p>
+            </div>
+            <a href="/portfolio/lumnia-dex" className="inline-flex items-center gap-2 self-start bg-white px-5 py-3 font-mono text-xs font-black uppercase tracking-[0.16em] text-black transition hover:bg-cyan-200 md:self-auto">
+              Start with Lumnia
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
           </div>
         </div>
       </div>

@@ -1,149 +1,103 @@
-import React from 'react';
-import { 
-  Code2, 
-  Database, 
-  Shield, 
-  Layers, 
-  Cpu, 
-  Network,
-  ArrowUpRight
-} from 'lucide-react';
+import { ArrowRight, Bot, Code2, DatabaseZap, GitBranch, LockKeyhole, PanelsTopLeft, TerminalSquare } from 'lucide-react';
 
 const Services = () => {
   const services = [
     {
-      icon: <Code2 className="h-8 w-8" />,
-      title: "Smart Contract Development",
-      description: "Expert smart contract development services for DeFi, NFT, and enterprise blockchain solutions.",
-      features: ["Solidity Development", "Contract Auditing", "Gas Optimization"],
-      color: "emerald"
+      icon: <Code2 className="h-6 w-6" />,
+      title: 'Full-stack product development',
+      description: 'Frontend, backend, API, admin, data model, deployment, and product polish for teams that need a complete build partner.',
+      features: ['React / TypeScript apps', 'NestJS / GraphQL APIs', 'Dashboards and admin tools'],
     },
     {
-      icon: <Shield className="h-8 w-8" />,
-      title: "Security Auditing",
-      description: "Comprehensive security audits and penetration testing for blockchain applications.",
-      features: ["Code Review", "Vulnerability Assessment", "Security Reports"],
-      color: "cyan"
+      icon: <GitBranch className="h-6 w-6" />,
+      title: 'Blockchain and DeFi engineering',
+      description: 'Protocol-facing UX, smart contract integrations, transaction flows, indexers, and DeFi product modules.',
+      features: ['DEX and liquidity flows', 'Wallet and web3 onboarding', 'Contract integration layer'],
     },
     {
-      icon: <Cpu className="h-8 w-8" />,
-      title: "DeFi Protocol Development",
-      description: "Custom DeFi protocols including DEX, lending platforms, and yield farming solutions.",
-      features: ["DEX Development", "Lending Protocols", "Yield Strategies"],
-      color: "blue"
+      icon: <Bot className="h-6 w-6" />,
+      title: 'AI product integration',
+      description: 'Model-powered workflows that turn raw product, market, or user data into useful automation and analysis.',
+      features: ['AI analytics features', 'Prompt and provider workflows', 'Data-to-insight interfaces'],
     },
     {
-      icon: <Database className="h-8 w-8" />,
-      title: "Blockchain Infrastructure",
-      description: "Full-stack blockchain infrastructure setup and maintenance services.",
-      features: ["Node Setup", "Network Monitoring", "Infrastructure Management"],
-      color: "purple"
+      icon: <LockKeyhole className="h-6 w-6" />,
+      title: 'Security-minded delivery',
+      description: 'We design for fewer mistakes: clear wallet states, safer transaction confirmation, code review, and launch hardening.',
+      features: ['Threat-aware UX', 'Audit preparation', 'QA and regression checks'],
     },
     {
-      icon: <Network className="h-8 w-8" />,
-      title: "AI Integration",
-      description: "Seamless AI integration with blockchain applications for enhanced functionality.",
-      features: ["ML Models", "Predictive Analytics", "Automated Systems"],
-      color: "pink"
+      icon: <DatabaseZap className="h-6 w-6" />,
+      title: 'Infrastructure and integrations',
+      description: 'RPCs, third-party APIs, analytics pipelines, fiat providers, notifications, and production observability.',
+      features: ['API aggregation', 'Provider integrations', 'Monitoring handoff'],
     },
     {
-      icon: <Layers className="h-8 w-8" />,
-      title: "Consulting & Strategy",
-      description: "Strategic blockchain and AI consulting to help you navigate the Web3 landscape.",
-      features: ["Technical Consulting", "Project Planning", "Team Training"],
-      color: "orange"
-    }
+      icon: <PanelsTopLeft className="h-6 w-6" />,
+      title: 'Product design and technical strategy',
+      description: 'Turn ambiguous ideas into screens, architecture, milestones, delivery scope, and investor/client-ready demos.',
+      features: ['Discovery workshops', 'MVP scope planning', 'Technical documentation'],
+    },
   ];
 
-  const getColorClasses = (color: string) => {
-    const colors = {
-      emerald: "from-emerald-500/20 to-emerald-600/20 border-emerald-500/30 text-emerald-400",
-      cyan: "from-cyan-500/20 to-cyan-600/20 border-cyan-500/30 text-cyan-400",
-      blue: "from-blue-500/20 to-blue-600/20 border-blue-500/30 text-blue-400",
-      purple: "from-purple-500/20 to-purple-600/20 border-purple-500/30 text-purple-400",
-      pink: "from-pink-500/20 to-pink-600/20 border-pink-500/30 text-pink-400",
-      orange: "from-orange-500/20 to-orange-600/20 border-orange-500/30 text-orange-400"
-    };
-    return colors[color as keyof typeof colors];
-  };
-
   return (
-    <section id="services" className="py-32 bg-black relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(16,185,129,0.1),transparent_50%)]"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(6,182,212,0.1),transparent_50%)]"></div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center space-x-2 bg-zinc-900/50 border border-zinc-800 rounded-full px-4 py-2 mb-8">
-            <span className="text-zinc-400 text-sm font-medium tracking-wide">OUR EXPERTISE</span>
+    <section id="services" className="tech-section relative overflow-hidden py-28">
+      <div className="absolute inset-0 tech-grid opacity-45" />
+      <div className="absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-cyan-300/30 to-transparent" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-14 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+          <div>
+            <div className="section-kicker mb-5">
+              <TerminalSquare className="h-4 w-4" />
+              What we build
+            </div>
+            <h2 className="font-display text-4xl font-black leading-[0.95] text-white sm:text-5xl lg:text-6xl">
+              Senior execution across product, Web3, and AI.
+            </h2>
           </div>
-          
-          <h2 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter leading-none">
-            TECHNICAL
-            <span className="block bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-              CAPABILITIES
-            </span>
-          </h2>
-          
-          <p className="text-xl text-zinc-400 max-w-3xl mx-auto font-light leading-relaxed">
-            Professional blockchain development and AI integration services. We help you build, deploy, and maintain cutting-edge Web3 solutions powered by artificial intelligence.
+          <p className="max-w-3xl text-base leading-7 text-slate-300 sm:text-lg">
+            Hire DCALabs as a focused outsourcing squad: product thinking, engineering discipline, and launch support in one team. We are strongest when the product is technically complex and needs to move fast.
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
-            <div
-              key={index}
-              className="group relative"
-            >
-              <div className={`absolute inset-0 bg-gradient-to-br ${getColorClasses(service.color).split(' ')[0]} ${getColorClasses(service.color).split(' ')[1]} rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-              
-              <div className="relative bg-zinc-900/30 border border-zinc-800/50 rounded-3xl p-8 hover:border-zinc-700/50 transition-all duration-500 group-hover:transform group-hover:-translate-y-2">
-                <div className="flex items-start justify-between mb-6">
-                  <div className={`p-4 rounded-2xl bg-gradient-to-br ${getColorClasses(service.color)}`}>
-                    {service.icon}
-                  </div>
-                  <ArrowUpRight className="h-5 w-5 text-zinc-600 group-hover:text-white group-hover:transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
+            <article key={service.title} className="motion-card border border-slate-800 bg-[#070b10]/95 p-6" style={{ animationDelay: `${index * 70}ms` }}>
+              <div className="mb-6 flex items-center justify-between">
+                <div className="flex h-11 w-11 items-center justify-center border border-cyan-300/25 bg-cyan-300/10 text-cyan-200">
+                  {service.icon}
                 </div>
-                
-                <h3 className="text-xl font-bold text-white mb-4 group-hover:text-white transition-colors">
-                  {service.title}
-                </h3>
-                
-                <p className="text-zinc-400 mb-6 leading-relaxed group-hover:text-zinc-300 transition-colors">
-                  {service.description}
-                </p>
-                
-                <div className="space-y-2">
-                  {service.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center text-zinc-500 text-sm group-hover:text-zinc-400 transition-colors">
-                      <div className="w-1.5 h-1.5 bg-zinc-600 rounded-full mr-3 group-hover:bg-zinc-400 transition-colors"></div>
-                      {feature}
-                    </div>
-                  ))}
-                </div>
+                <span className="font-mono text-xs font-black text-slate-600">0{index + 1}</span>
               </div>
-            </div>
+              <h3 className="font-display text-xl font-black leading-tight text-white">{service.title}</h3>
+              <p className="mt-4 text-sm leading-7 text-slate-400">{service.description}</p>
+              <div className="mt-6 space-y-3">
+                {service.features.map((feature) => (
+                  <div key={feature} className="flex items-center gap-3 text-sm font-semibold text-slate-300">
+                    <span className="h-1.5 w-1.5 bg-cyan-200" />
+                    {feature}
+                  </div>
+                ))}
+              </div>
+            </article>
           ))}
         </div>
 
-        {/* CTA Section */}
-        <div className="mt-24 text-center">
-          <div className="bg-zinc-900/30 border border-zinc-800/50 rounded-3xl p-12 backdrop-blur-sm">
-            <h3 className="text-3xl font-bold text-white mb-4">Ready to Build Your Blockchain & AI Solution?</h3>
-            <p className="text-zinc-400 mb-8 max-w-2xl mx-auto">
-              Let's discuss your requirements and how our expert team can deliver your blockchain and AI solution on time and within budget.
+        <div className="mt-10 flex flex-col items-start justify-between gap-6 border border-cyan-300/20 bg-cyan-300/[0.035] p-6 md:flex-row md:items-center">
+          <div>
+            <h3 className="font-display text-2xl font-black text-white">Need a squad for an existing product?</h3>
+            <p className="mt-2 max-w-3xl text-slate-400">
+              We can join midstream, read your codebase, stabilize delivery, and ship scoped milestones without rebuilding everything from scratch.
             </p>
-            <button 
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-white text-black px-8 py-4 rounded-full hover:bg-zinc-100 transition-all duration-300 text-lg font-bold cursor-pointer"
-            >
-              Get Quote
-            </button>
           </div>
+          <button
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="inline-flex shrink-0 cursor-pointer items-center gap-2 bg-white px-6 py-3 text-sm font-black text-black transition hover:bg-cyan-200"
+          >
+            Get a quote
+            <ArrowRight className="h-4 w-4" />
+          </button>
         </div>
       </div>
     </section>

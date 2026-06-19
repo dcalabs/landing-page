@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Menu, X, Hexagon, ArrowRight } from 'lucide-react';
+import { ArrowRight, Menu, X } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -7,27 +7,27 @@ const Header = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-zinc-800/50">
+    <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-[#050607]/82 backdrop-blur-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <div className="flex items-center space-x-2">
-            <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-emerald-400 to-cyan-400 rounded-lg">
-              <Hexagon className="h-6 w-6 text-black" />
-            </div>
-            <span className="text-2xl font-bold text-white tracking-tight">DCALabs</span>
-          </div>
+          <a href="#" className="flex items-center space-x-2">
+            <img src="/logo-mark.svg" alt="DCALabs logo" className="h-10 w-10 border border-cyan-300/30 bg-[#050607]" />
+            <span className="font-display text-2xl font-black text-white tracking-tight">DCALabs</span>
+          </a>
 
           <nav className="hidden md:block">
             <div className="flex items-center space-x-8">
-              <a href="#services" className="text-zinc-400 hover:text-white transition-colors text-sm font-medium">Services</a>
-              <a href="#about" className="text-zinc-400 hover:text-white transition-colors text-sm font-medium">About</a>
-              <a href="#portfolio" className="text-zinc-400 hover:text-white transition-colors text-sm font-medium">Portfolio</a>
-              <a href="#contact" className="text-zinc-400 hover:text-white transition-colors text-sm font-medium">Contact</a>
+              <a href="/#services" className="text-sm font-medium text-zinc-400 transition-colors hover:text-white">Services</a>
+              <a href="/#about" className="text-sm font-medium text-zinc-400 transition-colors hover:text-white">Team</a>
+              <a href="/#portfolio" className="text-sm font-medium text-zinc-400 transition-colors hover:text-white">Case Studies</a>
+              <a href="/#contact" className="text-sm font-medium text-zinc-400 transition-colors hover:text-white">Contact</a>
               <button 
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-white text-black px-6 py-2.5 rounded-full hover:bg-zinc-100 transition-all duration-200 flex items-center space-x-2 text-sm font-semibold cursor-pointer"
+                onClick={() => {
+                  window.location.href = '/#contact';
+                }}
+                className="flex cursor-pointer items-center space-x-2 bg-white px-6 py-2.5 text-sm font-bold text-black transition-all duration-200 hover:bg-cyan-200"
               >
-                <span>Get Started</span>
+                <span>Book a call</span>
                 <ArrowRight className="h-4 w-4" />
               </button>
             </div>
@@ -35,7 +35,8 @@ const Header = () => {
 
           <button
             onClick={toggleMenu}
-            className="md:hidden text-zinc-400 hover:text-white"
+            className="text-zinc-400 hover:text-white md:hidden"
+            aria-label="Toggle navigation"
           >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -44,20 +45,20 @@ const Header = () => {
 
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-black/95 backdrop-blur-md border-b border-zinc-800/50">
+        <div className="border-b border-white/10 bg-[#050607]/95 backdrop-blur-xl md:hidden">
           <div className="px-4 py-6 space-y-4">
-            <a href="#services" className="block text-zinc-400 hover:text-white transition-colors text-sm font-medium">Services</a>
-            <a href="#about" className="block text-zinc-400 hover:text-white transition-colors text-sm font-medium">About</a>
-            <a href="#portfolio" className="block text-zinc-400 hover:text-white transition-colors text-sm font-medium">Portfolio</a>
-            <a href="#contact" className="block text-zinc-400 hover:text-white transition-colors text-sm font-medium">Contact</a>
+            <a href="/#services" className="block text-sm font-medium text-zinc-400 transition-colors hover:text-white">Services</a>
+            <a href="/#about" className="block text-sm font-medium text-zinc-400 transition-colors hover:text-white">Team</a>
+            <a href="/#portfolio" className="block text-sm font-medium text-zinc-400 transition-colors hover:text-white">Case Studies</a>
+            <a href="/#contact" className="block text-sm font-medium text-zinc-400 transition-colors hover:text-white">Contact</a>
             <button 
               onClick={() => {
-                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                window.location.href = '/#contact';
                 setIsMenuOpen(false); // Close mobile menu after click
               }}
-              className="w-full bg-white text-black px-6 py-2.5 rounded-full hover:bg-zinc-100 transition-all duration-200 flex items-center justify-center space-x-2 text-sm font-semibold cursor-pointer"
+              className="flex w-full cursor-pointer items-center justify-center space-x-2 bg-white px-6 py-2.5 text-sm font-bold text-black transition-all duration-200 hover:bg-cyan-200"
             >
-              <span>Get Started</span>
+              <span>Book a call</span>
               <ArrowRight className="h-4 w-4" />
             </button>
           </div>
