@@ -25,6 +25,184 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: 'dex-trading-terminal',
+    title: 'High-Performance DEX Aggregator & Trading Terminal',
+    shortTitle: 'DEX Aggregator',
+    category: 'DEX Aggregator',
+    client: 'Proprietary Web3 Trading Terminal Provider',
+    industry: 'DeFi, DEX Aggregation, Anti-MEV, Sniping, Trading Tools',
+    engagement: 'Low-latency trading terminal design and backend build',
+    timeline: 'Architecture design -> mempool sniper build -> smart router -> launch support',
+    image: '/images/projects/dex-terminal.png',
+    summary: 'A high-performance decentralized trading terminal and multi-chain DEX aggregator supporting real-time token sniping, automated pre-trade honeypot simulation, and account abstraction.',
+    cardSummary: 'High-performance DEX aggregator & trading terminal with Anti-MEV, EIP-7702, and Rust signal parsers.',
+    problem:
+      'Decentralized traders face latency slippage, high gas costs, and constant threats from malicious smart contracts (honeypots, liquidity locks). Standard Web3 routers don\'t handle bot execution monetization or account abstraction well at the infrastructure level.',
+    solution:
+      'Engineered a custom Smart Contract Router supporting multi-DEX protocol aggregation with integrated fee-on-transfer monetization. Built a real-time token sniping service with mempool monitoring via gRPC/WebSockets, automated pre-trade token audits in NestJS, and EIP-7702/ERC-8004 standards for onchain AI Agent verification.',
+    role: [
+      'Design and build multi-protocol EVM smart contract routers for DEX aggregation with integrated fee monetization',
+      'Wrote high-performance token sniper service with mempool monitoring via gRPC/WebSockets for Block-0 execution',
+      'Develop automated pre-trade token audit simulator in NestJS to detect malicious contract patterns',
+      'Implement EIP-7702 account abstraction and ERC-8004 AI verification standards',
+      'Create low-latency signal parser using Rust for Solana integration'
+    ],
+    stack: ['Solidity', 'Rust', 'NestJS', 'Redis', 'MongoDB', 'gRPC', 'WebSockets', 'EIP-7702', 'ERC-8004'],
+    modules: [
+      { name: 'Mempool Monitor & Sniper', detail: 'Real-time mempool scanning using gRPC/WebSockets to execute trades at Block-0 with gas-optimized strategies.' },
+      { name: 'DEX Aggregator Router', detail: 'Smart Contract Router that aggregates routes across multiple DEXes with integrated fee-on-transfer fee monetization.' },
+      { name: 'Automated Audit Engine', detail: 'NestJS simulator executing dry-runs of token contracts before purchase to detect rugpull risks, tax traps, and honeypots.' },
+      { name: 'AI & Abstraction Layers', detail: 'EIP-7702 Account Abstraction workflow and ERC-8004 for cryptographically verifying AI-driven trading signals.' }
+    ],
+    architecture: [
+      { layer: 'DEX Router (Solidity)', detail: 'Gas-optimized aggregation contracts handling token swaps, slippage controls, and fees.' },
+      { layer: 'Parser & Snipping (Rust)', detail: 'Ultra-low latency microservice monitoring blockchain feeds via gRPC for block-0 transaction landing.' },
+      { layer: 'Simulation (NestJS/VM)', detail: 'Isolated execution sandbox simulating token swaps and transfer scenarios to detect contract vulnerabilities.' },
+      { layer: 'Data & Cache (Redis/Mongo)', detail: 'High-speed caching of verified contracts, active routes, and blacklist registries.' }
+    ],
+    deliverables: [
+      'Smart Contract Router (EVM)',
+      'gRPC Mempool Snipping Microservice',
+      'Pre-Trade Honeypot Detection Service',
+      'EIP-7702 Account Abstraction Integration',
+      'Rust Solana Signal Parser'
+    ],
+    outcomes: [
+      'Successful Block-0 trading capabilities for active user base',
+      'Zero-loss honeypot prevention for automated trades',
+      'Integrated monetization model via customizable router fee-on-transfer features'
+    ],
+    metrics: [
+      { label: 'Execution', value: 'Block-0' },
+      { label: 'Latency', value: 'Sub-ms' },
+      { label: 'Chains', value: 'Multi-Chain' }
+    ],
+    cardFacts: [
+      { label: 'Type', value: 'DEX Aggregator' },
+      { label: 'Chains', value: 'EVM & Solana' }
+    ],
+    links: []
+  },
+  {
+    slug: 'telegram-gamefi-app',
+    title: 'Massive-Scale GameFi Telegram Mini App',
+    shortTitle: 'Telegram GameFi',
+    category: 'GameFi & Mini App',
+    client: 'Top Play-to-Earn Telegram Game Studio',
+    industry: 'GameFi, Telegram Mini Apps, NFT, TON Blockchain',
+    engagement: 'High-scale GameFi product engineering and DevOps infrastructure',
+    timeline: 'Smart contract build -> mini-app APIs -> devops clustering -> scaling & launch',
+    image: '/images/projects/gamefi-app.png',
+    summary: 'A highly popular Play-to-Earn Telegram Mini App game serving over 9M+ total users, featuring custom Jettons, dynamic merge trees, and multi-region GKE scaling.',
+    cardSummary: 'Telegram GameFi mini-app with 9M+ users, top #1 Open League Hackathon winner, and TON/funC contracts.',
+    problem:
+      'Handling massive scale (9M+ users, 100k+ concurrent users) for Web3 features (airdrops, NFTs, Jettons) without high transaction fees, wallet onboarding friction, or massive cloud infrastructure costs.',
+    solution:
+      'Built scalable backend APIs using NestJS and MongoDB, integrated TON network via Tonapi/Toncenter, Wrote funC contracts for dynamic NFTs/Jettons, and designed a multi-cluster GKE setup that reduced cloud infrastructure costs by 82.5%.',
+    role: [
+      'Design and deploy TON smart contracts (funC) for Jettons and dynamic NFT merges',
+      'Build scalable backend APIs and indexer integrations using NestJS and MongoDB',
+      'Implement gas-efficient Merkle tree airdrop contracts',
+      'Design and deploy multi-region Google Kubernetes Engine (GKE) ingress configurations',
+      'Create GitLab CI/CD and ArgoCD GitOps pipelines for automated environment rollouts',
+      'Optimize server configurations to handle high concurrent user traffic (100k+ CCU)'
+    ],
+    stack: ['NestJS', 'MongoDB', 'Redis', 'FunC', 'Solidity', 'GKE', 'Terraform', 'ArgoCD', 'GitLab CI'],
+    modules: [
+      { name: 'Gameplay Contracts', detail: 'funC-based contracts managing Jetton tokens, NFT reverse auctions, and merge trees on TON.' },
+      { name: 'Game Backend APIs', detail: 'Scalable NestJS and MongoDB services handling profile progress, quests, and game state validation.' },
+      { name: 'Merkle Airdrop Engine', detail: 'Gas-efficient Merkle tree contract enabling millions of active players to claim rewards securely.' },
+      { name: 'DevOps & Infrastructure', detail: 'Multi-region GKE deployment with ArgoCD and Terraform managing automated scaling.' }
+    ],
+    architecture: [
+      { layer: 'TON Contracts', detail: 'funC contracts handling gameplay asset ownership, dynamic merge logic, and tokens.' },
+      { layer: 'API Service', detail: 'NestJS cluster executing game logic and caching live player data with Redis.' },
+      { layer: 'Blockchain Adapter', detail: 'Custom RPC bridge using toncenter and dton.io for indexing onchain token states.' },
+      { layer: 'Global Infra', detail: 'Terraform-provisioned GKE clusters with automated autoscaling and load balancers.' }
+    ],
+    deliverables: [
+      'funC Smart Contracts (TON)',
+      'High-Scale NestJS Game APIs',
+      'Merkle Airdrop Claim System',
+      'GKE Terraform Configurations',
+      'ArgoCD GitOps Pipeline'
+    ],
+    outcomes: [
+      'Won Top #1 in The Open League Hackathon',
+      'Featured in a major Web3 Accelerator program and listed on top-tier CEXes',
+      '82.5% reduction in cloud infrastructure costs ($40k/mo down to $7k/mo)',
+      'Processed 3M+ transactions and $1M+ in revenue with 200k+ UAW'
+    ],
+    metrics: [
+      { label: 'Total Users', value: '9M+' },
+      { label: 'Peak CCU', value: '100k+' },
+      { label: 'Cost Save', value: '82%' }
+    ],
+    cardFacts: [
+      { label: 'Users', value: '9M+ Total' },
+      { label: 'Rank', value: 'Top #1 OpenLeague' }
+    ],
+    links: []
+  },
+  {
+    slug: 'web3-gaming-hub',
+    title: 'Web3 Gaming Hub & Onboarding Portal',
+    shortTitle: 'Gaming Hub',
+    category: 'GameFi Platform',
+    client: 'Web3 Gaming Platform Provider',
+    industry: 'GameFi, Game SDK, Cross-Questing, System Observability',
+    engagement: 'Web3 game portal development and observability integration',
+    timeline: 'Quest engine -> NFT Bridge -> Observability setup -> GraphQL Subgraphs',
+    image: '/images/projects/gaming-hub.png',
+    summary: 'A comprehensive game portal enabling Web2 developers to convert games to Web3. Features cross-questing, NFT bridges, and full-stack observability with OpenTelemetry.',
+    cardSummary: 'Comprehensive Web3 game portal with quest engines, cross-chain bridges, and deep OpenTelemetry monitoring.',
+    problem:
+      'Game publishers struggle to onboard Web2 players into Web3 games, track engagement across multiple game titles, and monitor highly distributed gaming services under high load.',
+    solution:
+      'Developed a Web3 onboarding portal and cross-quest system. Wrote Solidity and funC contracts for NFT marketplaces, bridges, and airdrops, and implemented full-stack observability using OpenTelemetry, Prometheus, Grafana, and Jaeger.',
+    role: [
+      'Build portal backend APIs and custom indexing using NestJS and MongoDB',
+      'Write smart contracts for NFT marketplaces, cross-chain bridges, and airdrops',
+      'Implement full-stack system observability using OpenTelemetry, Prometheus, Grafana, and Jaeger',
+      'Structure subgraphs and indexers for real-time player quest tracking'
+    ],
+    stack: ['NestJS', 'MongoDB', 'FunC', 'Solidity', 'GraphQL', 'Subgraph', 'OpenTelemetry', 'Prometheus', 'Grafana', 'Jaeger'],
+    modules: [
+      { name: 'Cross-Quest Engine', detail: 'Logic engine allowing developers to create quests that span multiple games to drive user traffic.' },
+      { name: 'NFT Bridge & Market', detail: 'Smart contracts supporting multi-chain NFT transfers, secondary market trades, and rewards.' },
+      { name: 'Observability System', detail: 'OpenTelemetry instrumentation exposing database, API, and network stats for real-time dashboard tracking.' },
+      { name: 'GraphQL Subgraphs', detail: 'Fast decentralized indexers queryable via GraphQL to display in-game item transactions.' }
+    ],
+    architecture: [
+      { layer: 'Onchain Core', detail: 'Solidity and funC contracts governing NFT bridges, airdrops, and token trade rules.' },
+      { layer: 'Portal API', detail: 'GraphQL and NestJS server querying subgraphs and validating off-chain actions.' },
+      { layer: 'Indexing Layer', detail: 'The Graph protocol subgraphs listening to EVM and TON events for real-time asset tracking.' },
+      { layer: 'Observability', detail: 'Prometheus & Jaeger collectors compiling traces and metrics into centralized Grafana dashboards.' }
+    ],
+    deliverables: [
+      'Solidity & funC Bridge Contracts',
+      'Quest Management Portal APIs',
+      'OpenTelemetry Instrumentation Package',
+      'Centralized Grafana Dashboards',
+      'GraphQL Subgraph Indexer'
+    ],
+    outcomes: [
+      'Onboarded multiple Web2 games into the Web3 ecosystem',
+      'Sub-second query response times for blockchain assets using subgraphs',
+      'Reduced incident response times by 65% via distributed tracing'
+    ],
+    metrics: [
+      { label: 'Questing', value: 'Multi-Game' },
+      { label: 'Tracing', value: 'Distributed' },
+      { label: 'API Interface', value: 'GraphQL' }
+    ],
+    cardFacts: [
+      { label: 'Type', value: 'Portal & Hub' },
+      { label: 'Observability', value: 'OTel Stack' }
+    ],
+    links: []
+  },
+  {
     slug: 'lumnia-dex',
     title: 'Lumnia DEX Platform',
     shortTitle: 'Lumnia DEX',
@@ -172,58 +350,10 @@ export const projects: Project[] = [
     links: [{ label: 'Visit project', href: 'https://meowtopia.fun/' }],
   },
   {
-    slug: 'ez-wallet',
-    title: 'EZ Wallet',
-    shortTitle: 'EZ Wallet',
-    category: 'Wallet & DeFi',
-    client: 'Consumer crypto wallet for Web2 users',
-    industry: 'Wallet, fintech, DeFi onboarding',
-    engagement: 'Full-stack wallet product build',
-    timeline: 'Backend APIs -> wallet UX -> DeFi flows -> provider integration',
-    image: '/images/projects/ezwallet.jpg',
-    summary: 'Simplified crypto wallet with learn-and-earn, safer sending, limit-order DeFi, identity, and fiat onboarding.',
-    cardSummary: 'Consumer crypto wallet with safer sending, DeFi actions, identity, and fiat flows.',
-    problem:
-      'The client wanted real wallet and DeFi functionality without exposing mainstream users to the complexity that usually makes crypto products feel risky.',
-    solution:
-      'We designed wallet flows around confirmation, clarity, identity, and progressive DeFi actions. The backend supports expandable product state and third-party provider integrations.',
-    role: [
-      'Build API architecture and wallet product flows',
-      'Design safer transaction confirmation patterns',
-      'Integrate DeFi and fiat provider surfaces',
-      'Create foundation for account, identity, and product expansion',
-    ],
-    stack: ['NestJS', 'GraphQL', 'Solidity', 'web3.js', 'DeFi', 'MoonPay', 'Transak'],
-    modules: [
-      { name: 'Wallet account', detail: 'Account, balance, identity, and user state exposed through backend APIs.' },
-      { name: 'Send flow', detail: 'Confirmation-first transaction pattern for safer token transfers.' },
-      { name: 'DeFi actions', detail: 'Limit-order and protocol surfaces connected through wallet UX.' },
-      { name: 'Fiat bridge', detail: 'Provider entry points for MoonPay/Transak-style onboarding.' },
-    ],
-    architecture: [
-      { layer: 'Backend', detail: 'NestJS/GraphQL API layer for wallet, account, and product state.' },
-      { layer: 'Web3', detail: 'Smart contract and web3.js touchpoints for token and DeFi interactions.' },
-      { layer: 'UX', detail: 'Consumer-grade wallet flows with explicit confirmation and status feedback.' },
-      { layer: 'Providers', detail: 'Fiat and identity-aware integration paths for onboarding and growth.' },
-    ],
-    deliverables: ['Wallet app flows', 'GraphQL API architecture', 'Smart contract touchpoints', 'Fiat integration paths', 'DeFi action surfaces'],
-    outcomes: ['Simpler onboarding for Web2 users', 'Expandable wallet backend', 'Cleaner bridge between fiat, identity, and DeFi'],
-    metrics: [
-      { label: 'Type', value: 'Wallet' },
-      { label: 'Scope', value: 'DeFi' },
-      { label: 'Backend', value: 'GraphQL' },
-    ],
-    cardFacts: [
-      { label: 'Type', value: 'Wallet' },
-      { label: 'Scope', value: 'DeFi + fiat' },
-    ],
-    links: [{ label: 'Visit project', href: 'https://ezwallet.xyz/' }],
-  },
-  {
     slug: 'kulturhotel-kaiserhof',
     title: 'Kulturhotel Kaiserhof Website',
     shortTitle: 'Kaiserhof Hotel',
-    category: 'Hospitality Website',
+    category: 'Websites & Portals',
     client: 'Kulturhotel Kaiserhof, a historic hotel in Bad Liebenstein, Germany',
     industry: 'Hospitality, hotel booking, tourism, local destination marketing',
     engagement: 'Next.js website, SEO foundation, admin panel, content workflow',
@@ -262,10 +392,10 @@ export const projects: Project[] = [
       { label: 'Admin', value: 'Panel' },
     ],
     cardFacts: [
-      { label: 'Type', value: 'Hotel website' },
+      { label: 'Type', value: 'Hotel Website' },
       { label: 'Stack', value: 'Next.js' },
     ],
-    links: [{ label: 'Visit project', href: 'https://stag.kulturhotel-kaiserhof.de/' }],
+    links: [{ label: 'Visit project', href: 'https://www.kulturhotel-kaiserhof.de' }],
   },
   {
     slug: '1tap-finance',
@@ -277,43 +407,54 @@ export const projects: Project[] = [
     engagement: 'Web3 product website and DeFi experience',
     timeline: 'Product positioning -> landing UI -> DeFi flows -> protocol integration surfaces',
     image: '/images/projects/1tap-finance.png',
-    summary: 'A Solana DeFi product experience for staking, earn, borrow, and yield opportunities across protocols such as Jupiter and Kamino.',
-    cardSummary: 'Solana DeFi interface for staking, earn, borrow, and protocol yield discovery.',
+    summary: 'A Solana-native DeFi platform for swaps, staking, auto-staking, and borrowing, featuring an autonomous background yield optimizer and Telegram-based trading and social tools.',
+    cardSummary: 'Solana DeFi platform with Jupiter swaps, Kamino yield, auto-staking, and Telegram Social Signals.',
     problem:
       'DeFi users need fast access to yield, staking, borrow, and portfolio actions without jumping between many protocol interfaces. The product needed to communicate automation, protocol coverage, and a clean path to app launch.',
     solution:
-      'We helped shape a technical DeFi web experience around automated yield management, protocol integrations, launch/app CTAs, and a clear visual system for Solana-native finance users.',
+      'Engineered a unified Solana DeFi DApp integrating Jupiter swaps, Kamino vaults, and an autonomous auto-staking yield optimizer. Built a companion Telegram Bot providing Social Signals, Pump Radars for early Solana tokens, scanner token analytics, and a private Social Sniper dashboard.',
     role: [
       'Design and build Web3 landing/product surfaces for a Solana DeFi platform',
       'Communicate staking, earn, borrow, portfolio, and yield aggregation flows',
       'Present protocol integrations such as Jupiter and Kamino in a clear product narrative',
       'Create frontend sections that support launch, community, and app conversion paths',
+      'Designed mockups and user flows for the accompanying Telegram scanner and sniper bots'
     ],
     stack: ['Solana', 'Next.js', 'React', 'TypeScript', 'DeFi', 'Jupiter', 'Kamino', 'Staking UX'],
     modules: [
-      { name: 'DeFi landing system', detail: 'Hero, product narrative, app launch CTA, community CTA, and protocol integration messaging.' },
-      { name: 'Yield surfaces', detail: 'Visual representation of vaults, APR, portfolio values, staking status, and automated opportunities.' },
-      { name: 'Protocol messaging', detail: 'Jupiter, Kamino, and Solana ecosystem positioning shown as user-facing product value.' },
-      { name: 'Conversion paths', detail: 'Launch app, join community, and product navigation built for active Web3 users.' },
+      { name: 'Unified Swap & Borrow', detail: 'Instant token swaps and collateralized borrowing powered by deep Jupiter and Kamino protocol integrations.' },
+      { name: 'Auto-Staking Vaults', detail: 'Autonomous background yield optimizer that automatically migrates assets to maximize yield and APR.' },
+      { name: 'Telegram Bot Interface', detail: 'Full-featured chat assistant enabling wallet operations, portfolio tracking, and yield actions from Telegram.' },
+      { name: 'Social Signals & Sniper', detail: 'Pump.fun-style market monitoring (Pump Radar), KOL token call signals, scanner analytics, and automated sniper rules.' }
     ],
     architecture: [
-      { layer: 'Frontend', detail: 'Next.js/React interface optimized for fast landing pages and DeFi product storytelling.' },
-      { layer: 'DeFi UX', detail: 'Borrow, earn, staking, and portfolio concepts organized into simple user-facing flows.' },
-      { layer: 'Protocol layer', detail: 'Product messaging and integration surfaces around Solana protocols including Jupiter and Kamino.' },
-      { layer: 'Growth', detail: 'CTA and community entry points designed to move users from marketing site to app usage.' },
+      { layer: 'DApp Frontend', detail: 'Next.js application featuring real-time yield surfaces, APR dashboards, and wallet adapters.' },
+      { layer: 'Protocol Router', detail: 'Integration layer communicating with Jupiter DEX aggregator and Kamino Lending SDKs.' },
+      { layer: 'Telegram Client', detail: 'Node.js bot processing chat commands, portfolio queries, and triggering swaps.' },
+      { layer: 'Signal Processor', detail: 'Scanning engine monitoring KOL channels and pump.fun contracts for real-time sniper alerts.' }
     ],
-    deliverables: ['DeFi product website', 'Solana-focused UI system', 'Landing page conversion flow', 'Protocol integration messaging', 'Staking/earn/borrow product surfaces'],
-    outcomes: ['Clear product story for Solana DeFi users', 'Fast route from landing page to app launch', 'Better explanation of yield automation and protocol coverage'],
+    deliverables: [
+      'Web DApp for Swaps & Borrowing',
+      'Auto-Staking Yield Optimization Engine',
+      'Telegram DeFi & Wallet Bot',
+      'Pump Radar & Scanner Bot',
+      'Social Sniper Dashboard'
+    ],
+    outcomes: [
+      'Streamlined Solana DeFi access into a single, unified interface',
+      'Automated yield generation with hands-off auto-staking mechanics',
+      'Enhanced early token discovery via Telegram social call triggers'
+    ],
     metrics: [
       { label: 'Chain', value: 'Solana' },
       { label: 'Scope', value: 'DeFi' },
-      { label: 'Stack', value: 'Next.js' },
+      { label: 'Stack', value: 'Next.js' }
     ],
     cardFacts: [
-      { label: 'Type', value: 'DeFi app' },
-      { label: 'Chain', value: 'Solana' },
+      { label: 'Type', value: 'DeFi App' },
+      { label: 'Chain', value: 'Solana' }
     ],
-    links: [{ label: 'Visit project', href: 'https://1tap.finance/' }],
+    links: [{ label: 'Visit project', href: 'https://1tap.finance/' }]
   },
   {
     slug: 'neurovault',
@@ -325,44 +466,55 @@ export const projects: Project[] = [
     engagement: 'AI DeFi vault product and technical web experience',
     timeline: 'Vault concept -> product UI -> ERC-4626 messaging -> AI yield strategy surfaces',
     image: '/images/projects/neurovault.png',
-    summary: 'An ERC-4626 vault product using AI to optimize yield strategies and distribute generated yield back to users.',
-    cardSummary: 'AI-powered ERC-4626 vault experience for yield optimization and user distribution.',
+    summary: 'An AI-powered ERC-4626 vault platform for yield optimization, featuring automated testnet stakers and multi-sig risk management on the Pharos Network.',
+    cardSummary: 'AI ERC-4626 vault with autonomous stakers, Rays Allocation Engine, and Pharos Network integration.',
     problem:
       'Vault products can be difficult for users to understand because yield sources, redemption paths, NAV, share accounting, and strategy health are often hidden behind protocol terminology.',
     solution:
-      'We shaped the product experience around AI-managed vault intelligence, clear ERC-4626 vault concepts, transparent asset/NAV surfaces, redemption paths, yield engine health, and user-facing distribution logic.',
+      'Built an AI-driven ERC-4626 yield aggregator featuring a MetaVault layer and the Rays Allocation Engine to suggest yield strategies based on user risk profiles. Integrated with Pharos Network Atlantic Testnet using Permit2, Multicall3, and ERC-4337 Account Abstraction.',
     role: [
       'Design the product narrative for an AI-powered ERC-4626 vault',
       'Create technical UI surfaces for vault assets, NAV, redemption paths, and yield engine status',
       'Explain AI yield optimization in a user-readable DeFi product experience',
       'Structure the site around protocol credibility, user trust, and vault mechanics',
+      'Integrated the client application with Pharos Atlantic Testnet contracts (Permit2, Multicall3, EntryPoint)'
     ],
-    stack: ['ERC-4626', 'DeFi', 'AI Strategy', 'Vault UX', 'React', 'Next.js', 'Yield Optimization'],
+    stack: ['ERC-4626', 'DeFi', 'AI Strategy', 'Vault UX', 'React', 'Next.js', 'Pharos Network'],
     modules: [
-      { name: 'Vault overview', detail: 'Total vault assets, NAV, user shares, and asset allocation presented in a readable dashboard-style surface.' },
-      { name: 'AI yield engine', detail: 'Product surfaces explaining how AI evaluates strategies to target improved yield performance.' },
-      { name: 'Redemption paths', detail: 'Instant and async redemption concepts shown clearly for user confidence and operational transparency.' },
-      { name: 'User distribution', detail: 'Yield distribution messaging designed to help users understand where optimized yield goes.' },
+      { name: 'MetaVault Core', detail: 'ERC-4626 standard compliance governing deposit accounting, share pricing, NAV, and redemptions.' },
+      { name: 'Rays Allocation Engine', detail: 'AI-powered intelligence engine analyzing DeFi profiles to recommend and execute dynamic yield adjustments.' },
+      { name: 'Account Abstraction', detail: 'ERC-4337 EntryPoint contract integration providing gasless, seedless, and 1-click transaction flows.' },
+      { name: 'Pharos Adapter', detail: 'Atlantic Testnet integration supporting USDC, USDT, WBTC, WETH, and WPHRS testnet tokens.' }
     ],
     architecture: [
-      { layer: 'Vault standard', detail: 'ERC-4626 concepts translated into product UX: assets, shares, NAV, deposits, and redemptions.' },
-      { layer: 'AI strategy layer', detail: 'AI-driven strategy selection and yield engine health represented as understandable product states.' },
-      { layer: 'User accounting', detail: 'Claimable shares, vault NAV, and redemption paths communicated through dashboard components.' },
-      { layer: 'Trust surface', detail: 'Technical messaging, transparent mechanics, and visual system built for DeFi users evaluating vault risk.' },
+      { layer: 'MetaVault Layer', detail: 'ERC-4626 standard smart contracts governing asset deposits, share value accounting, and redemption rules.' },
+      { layer: 'Intelligence Engine', detail: 'Off-chain AI models assessing protocol safety, gas costs, and routing Ray token allocations.' },
+      { layer: 'Account Abstraction', detail: 'ERC-4337 smart account infrastructure and Permit2 contract signatures for gasless token approvals.' },
+      { layer: 'Network Interface', detail: 'EVM RPC connection to Pharos Atlantic Testnet (ChainID 688689) with rate-limiting fallback controls.' }
     ],
-    deliverables: ['AI vault product website', 'ERC-4626 product narrative', 'Vault dashboard visuals', 'Yield engine UI sections', 'Redemption path explanation', 'User distribution messaging'],
-    outcomes: ['Clear explanation of AI-powered vault mechanics', 'More understandable ERC-4626 user experience', 'Stronger trust surface for DeFi vault users'],
+    deliverables: [
+      'ERC-4626 MetaVault Contracts',
+      'Rays Allocation Recommendation Engine',
+      'ERC-4337 EntryPoint Integration',
+      'Permit2 & Multicall3 Adapters',
+      'Pharos Network Integration Interface'
+    ],
+    outcomes: [
+      'Automated yield rebalancing across Pharos testnet protocols',
+      'Onboarded Web2 users via gasless smart account abstraction flows',
+      'Safe sandbox for learning yield optimization strategies'
+    ],
     metrics: [
       { label: 'Standard', value: 'ERC-4626' },
       { label: 'Engine', value: 'AI' },
-      { label: 'Scope', value: 'Vault' },
+      { label: 'ChainID', value: '688689' }
     ],
     cardFacts: [
-      { label: 'Type', value: 'AI vault' },
-      { label: 'Standard', value: 'ERC-4626' },
+      { label: 'Type', value: 'AI Vault' },
+      { label: 'Standard', value: 'ERC-4626' }
     ],
-    links: [{ label: 'Visit project', href: 'https://www.neurovault.cc/' }],
-  },
+    links: [{ label: 'Visit project', href: 'https://www.neurovault.cc/' }]
+  }
 ];
 
 export const getProjectBySlug = (slug: string) => projects.find((project) => project.slug === slug);

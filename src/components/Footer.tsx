@@ -26,19 +26,19 @@ const Footer = () => {
           <div>
             <h3 className="mb-5 text-sm font-bold uppercase tracking-[0.18em] text-zinc-500">Services</h3>
             <ul className="space-y-3 text-sm text-zinc-400">
-              <li><a href="#services" className="transition hover:text-white">Full-stack product build</a></li>
-              <li><a href="#services" className="transition hover:text-white">Blockchain and DeFi</a></li>
-              <li><a href="#services" className="transition hover:text-white">AI integration</a></li>
-              <li><a href="#services" className="transition hover:text-white">Infrastructure</a></li>
+              <li><a href="/#services" className="transition hover:text-white">Full-stack product build</a></li>
+              <li><a href="/#services" className="transition hover:text-white">Blockchain and DeFi</a></li>
+              <li><a href="/#services" className="transition hover:text-white">AI integration</a></li>
+              <li><a href="/#services" className="transition hover:text-white">Infrastructure</a></li>
             </ul>
           </div>
 
           <div>
             <h3 className="mb-5 text-sm font-bold uppercase tracking-[0.18em] text-zinc-500">Company</h3>
             <ul className="space-y-3 text-sm text-zinc-400">
-              <li><a href="#about" className="transition hover:text-white">Team</a></li>
-              <li><a href="#portfolio" className="transition hover:text-white">Case studies</a></li>
-              <li><a href="#contact" className="transition hover:text-white">Contact</a></li>
+              <li><a href="/#about" className="transition hover:text-white">Team</a></li>
+              <li><a href="/portfolio" className="transition hover:text-white">Case studies</a></li>
+              <li><a href="/#contact" className="transition hover:text-white">Contact</a></li>
             </ul>
           </div>
         </div>

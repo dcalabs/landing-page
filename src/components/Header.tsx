@@ -10,7 +10,7 @@ const Header = () => {
     <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-[#050607]/82 backdrop-blur-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <a href="#" className="flex items-center space-x-2">
+          <a href="/" className="flex items-center space-x-2">
             <img src="/logo-mark.svg" alt="DCALabs logo" className="h-10 w-10 border border-cyan-300/30 bg-[#050607]" />
             <span className="font-display text-2xl font-black text-white tracking-tight">DCALabs</span>
           </a>
@@ -19,7 +19,7 @@ const Header = () => {
             <div className="flex items-center space-x-8">
               <a href="/#services" className="text-sm font-medium text-zinc-400 transition-colors hover:text-white">Services</a>
               <a href="/#about" className="text-sm font-medium text-zinc-400 transition-colors hover:text-white">Team</a>
-              <a href="/#portfolio" className="text-sm font-medium text-zinc-400 transition-colors hover:text-white">Case Studies</a>
+              <a href="/portfolio" className="text-sm font-medium text-zinc-400 transition-colors hover:text-white">Case Studies</a>
               <a href="/#contact" className="text-sm font-medium text-zinc-400 transition-colors hover:text-white">Contact</a>
               <button 
                 onClick={() => {
@@ -49,7 +49,7 @@ const Header = () => {
           <div className="px-4 py-6 space-y-4">
             <a href="/#services" className="block text-sm font-medium text-zinc-400 transition-colors hover:text-white">Services</a>
             <a href="/#about" className="block text-sm font-medium text-zinc-400 transition-colors hover:text-white">Team</a>
-            <a href="/#portfolio" className="block text-sm font-medium text-zinc-400 transition-colors hover:text-white">Case Studies</a>
+            <a href="/portfolio" className="block text-sm font-medium text-zinc-400 transition-colors hover:text-white">Case Studies</a>
             <a href="/#contact" className="block text-sm font-medium text-zinc-400 transition-colors hover:text-white">Contact</a>
             <button 
               onClick={() => {
